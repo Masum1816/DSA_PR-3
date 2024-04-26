@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        class ReverseLinkedList {
+
+            constructor(d){
+
+                this.head = {
+                    data: d,
+                    next: null
+                }
+
+                this.tail = this.head;
+                this.size = 1;
+
+            }
+
+            addList(value){
+
+                let newNode = {
+                    data: value,
+                    next: null
+                }
+
+                this.tail.next = newNode;
+                this.tail = newNode;
+                this.size++;
+            }
+
+            viewList(){
+
+                let current = this.head;
+
+                while(current != null){
+
+                    console.log("Current List : ", current.data);
+                    current = current.next;
+
+                }
+
+            }
+
+            middleNode(){
+
+                let current = this.head;
+                let middleNode = Math.round(this.size/2);
+                let index = 1;
+
+                while(current != null){
+
+                    if(index == middleNode){
+
+                        console.log("Middle Node : ",current);
+
+                    }
+
+                    current = current.next;
+                    index++;
+
+                }
+
+            }
+
+        }
+
+        let list = new ReverseLinkedList("List1");
+
+        console.log(list);
+        list.addList("List2");
+        list.addList("List3");
+        list.addList("List4");
+        list.addList("List5");
+        list.addList("List6");
+        list.addList("List7");
+
+        list.viewList();
+
+        console.log("====== Middle Node =======");
+
+        list.middleNode();
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var data;
+        var next;
+
+        class LinkedList {
+
+            constructor(d){
+
+                this.head = {
+                    data: d,
+                    next: null
+                }
+
+                this.tail = this.head;
+                this.size = 1;
+
+            };
+
+            addList(value){
+
+                const newNode = {
+                    data: value,
+                    next: null
+                }
+
+                this.tail.next = newNode;
+
+                this.tail = newNode;
+
+                this.size++;
+
+            };
+
+            viewList(){
+
+                let current = this.head;
+
+                while(current != null){
+
+                    console.log("Counter : ", current.data);
+                    current = current.next;
+
+                }
+            }
+
+            removeNode(num){
+
+                let current = this.head;
+
+                for(let i=1; i<num-1; i++)
+                {
+                    current = current.next;
+                }
+                current.next = current.next.next;
+
+                this.size--;
+            }
+
+        };
+
+        let list1 = new LinkedList(100);
+        console.log("List1 : ", list1);
+
+        list1.addList(200);
+        list1.addList(300);
+        list1.addList(400);
+        list1.addList(500);
+
+        list1.viewList();
+        
+        list1.removeNode(3);
+        
+        console.log("===== After Remove =======");
+
+        list1.viewList();
+        
+    </script>
+</body>
+</html>

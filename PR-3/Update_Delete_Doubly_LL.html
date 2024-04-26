@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        class DoublyLinkedList {
+
+            constructor(d){
+
+                this.head = {
+                    prev : null,
+                    data : d,
+                    next : null
+                }
+
+                this.tail = this.head;
+                this.size = 1;
+
+            }
+
+            addList(value){
+
+                let current = this.head;
+
+                let newNode = {
+                    prev : null,
+                    data : value,
+                    next : null
+                }
+
+                while(current != null){
+
+                    newNode.prev = current;
+                    current = current.next;
+
+                }
+
+                this.tail.next = newNode;
+                this.tail = newNode;
+                this.size++;
+
+            }
+
+            viewList(){
+
+                let current = this.head;
+
+                while(current != null)
+                {
+                    console.log("View List : ",current.data);
+                    current = current.next;
+                }
+
+            }
+
+            removeNode(num){
+
+                let current = this.head;
+
+                for(let i=1; i<num-1; i++)
+                {
+                    current = current.next;
+                }
+                current.next = current.next.next;
+
+            }
+
+            updateNode(pos,data){
+
+                let current = this.head;
+
+                for(let i=1; i<pos-1; i++)
+                {
+                    // newNode.prev = current;
+                    current = current.next;
+                }
+
+                if(current != null){
+                    current.next.data = data;
+                }
+
+            }
+
+        }
+
+        let list = new DoublyLinkedList("List1");
+        console.log(list);
+
+        list.addList("List2");
+        list.addList("List3");
+        list.addList("List4");
+        list.addList("List5");
+
+        list.viewList();
+
+        list.removeNode(2);
+
+        console.log("======= After Remove =======");
+
+        list.viewList();
+
+        console.log("======= After Update =======");
+
+        list.updateNode(2,"List6");
+
+        list.viewList();
+
+    </script>
+</body>
+</html>
